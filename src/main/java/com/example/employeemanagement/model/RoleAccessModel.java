@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @Entity
@@ -21,12 +20,12 @@ public class RoleAccessModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String menu;
-    private String menu_Code;
+    private String menuCode;
     private Long roleId;
-    private Boolean is_View;
-    private Boolean is_Add;
-    private Boolean is_Edit;
-    private Boolean is_Delete;
+    private Boolean isView;
+    private Boolean isAdd;
+    private Boolean isEdit;
+    private Boolean isDelete;
     private Date createDate;
     private Date updateDate;
 
