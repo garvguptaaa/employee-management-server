@@ -16,6 +16,8 @@ import com.example.employeemanagement.dto.RoleDto;
 import com.example.employeemanagement.model.UserModel;
 import com.example.employeemanagement.response.ApiResponse;
 import com.example.employeemanagement.service.RoleService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,6 +40,11 @@ public class RoleController {
     @GetMapping("/{id}")
     public RoleDto getDetails(@PathVariable Long id) {
         return roleService.getDetails(id);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void deleteRole(@PathVariable Long id) {
+        roleService.deleteRole(id);
     }
 
     @GetMapping("/all/list")

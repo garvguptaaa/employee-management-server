@@ -95,4 +95,8 @@ public class RoleService {
         return response;
     }
 
+    public void deleteRole(Long id) {
+        roleRepository.deleteById(id);
+    }
+
 }
