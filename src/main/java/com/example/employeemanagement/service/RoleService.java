@@ -78,6 +78,7 @@ public class RoleService {
             roleAccessDto.setIsDelete(roleAccessModel.getIsDelete());
             roleAccess.add(roleAccessDto);
         }
+        roleDto.setRoleAccess(roleAccess);
         return roleDto;
     }
 
