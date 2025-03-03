@@ -3,6 +3,9 @@ package com.example.employeemanagement.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.employeemanagement.model.UserModel;
@@ -36,6 +39,7 @@ public class UserService {
         System.out.println("user.getStatus() ::: " + user.getStatus());
         System.out.println("user.getRoleId() ::: " + user.getRoleId());
         System.out.println("user.getUserType() ::: " + user.getUserType());
+        System.out.println("user.getPassword() ::: " + user.getPassword());
 
         userModel.setEmail(user.getEmail());
         userModel.setMobile(user.getMobile());
@@ -44,6 +48,7 @@ public class UserService {
         userModel.setRoleId(user.getRoleId());
         userModel.setStatus(user.getStatus());
         userModel.setUserType(user.getUserType());
+        userModel.setPassword(user.getPassword());
 
         return userRepository.save(userModel);
     }
@@ -58,5 +63,15 @@ public class UserService {
 
     public List<UserModel> getAllUsers() {
         return userRepository.findByUserTypeAndStatus(UserType.USER, Status.ACTIVE);
+    }
+
+    public Optional<UserModel> authenticate(String email, String password) {
+        Optional<UserModel> user = userRepository.findByEmail(email);
+        boolean isAuthenticated = user.isPresent() && user.get().getPassword().equals(password);
+        if (isAuthenticated) {
+            return userRepository.findByEmail(email);
+        } else {
+            return null;
+        }
     }
 }

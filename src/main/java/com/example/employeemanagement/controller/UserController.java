@@ -53,4 +53,14 @@ public class UserController {
         return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<UserModel> login(@RequestBody UserModel user) {
+        Optional<UserModel> isAuthenticated = userService.authenticate(user.getEmail(), user.getPassword());
+        if (isAuthenticated.isPresent()) {
+            return new ResponseEntity<>(isAuthenticated.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 }
