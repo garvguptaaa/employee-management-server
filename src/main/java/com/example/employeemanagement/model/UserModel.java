@@ -7,6 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import com.example.employeemanagement.utility.Enumeration.Status;
 import com.example.employeemanagement.utility.Enumeration.UserType;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -32,6 +33,11 @@ public class UserModel {
     private String password;
     private String mobile;
     private Long roleId;
+
+    @Column(length = 1000)
+    private String address;
+    
+    private String position;
 
     @CreatedDate
     private Date creatdDate;

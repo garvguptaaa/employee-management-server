@@ -40,6 +40,9 @@ public class UserService {
         System.out.println("user.getRoleId() ::: " + user.getRoleId());
         System.out.println("user.getUserType() ::: " + user.getUserType());
         System.out.println("user.getPassword() ::: " + user.getPassword());
+        System.out.println("user.getAddress() ::: " + user.getAddress());
+        System.out.println("user.getPosition() ::: " + user.getPosition());
+
 
         userModel.setEmail(user.getEmail());
         userModel.setMobile(user.getMobile());
@@ -49,6 +52,8 @@ public class UserService {
         userModel.setStatus(user.getStatus());
         userModel.setUserType(user.getUserType());
         userModel.setPassword(user.getPassword());
+        userModel.setAddress(user.getAddress());
+        userModel.setPosition(user.getPosition());
 
         return userRepository.save(userModel);
     }

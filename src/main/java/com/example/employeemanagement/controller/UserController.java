@@ -63,6 +63,12 @@ public class UserController {
             userDto.setFirstName(isAuthenticated.get().getFirstName());
             userDto.setLastName(isAuthenticated.get().getLastName());
             userDto.setEmail(isAuthenticated.get().getEmail());
+            userDto.setRoleId(isAuthenticated.get().getRoleId());
+            userDto.setMobile(isAuthenticated.get().getMobile());
+            userDto.setStatus(isAuthenticated.get().getStatus());
+            userDto.setUserType(isAuthenticated.get().getUserType());
+            userDto.setAddress(isAuthenticated.get().getAddress());
+            userDto.setPosition(isAuthenticated.get().getPosition());
             return new ResponseEntity<>(userDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
