@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.employeemanagement.dto.UserDto;
 import com.example.employeemanagement.model.UserModel;
 import com.example.employeemanagement.service.UserService;
 
@@ -54,10 +55,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserModel> login(@RequestBody UserModel user) {
+    public ResponseEntity<UserDto> login(@RequestBody UserModel user) {
         Optional<UserModel> isAuthenticated = userService.authenticate(user.getEmail(), user.getPassword());
         if (isAuthenticated.isPresent()) {
-            return new ResponseEntity<>(isAuthenticated.get(), HttpStatus.OK);
+            UserDto userDto = new UserDto();
+            userDto.setId(isAuthenticated.get().getId());
+            userDto.setFirstName(isAuthenticated.get().getFirstName());
+            userDto.setLastName(isAuthenticated.get().getLastName());
+            userDto.setEmail(isAuthenticated.get().getEmail());
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
