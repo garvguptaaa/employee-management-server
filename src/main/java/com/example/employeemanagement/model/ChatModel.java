@@ -5,8 +5,6 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.example.employeemanagement.utility.Enumeration.Status;
-import com.example.employeemanagement.utility.Enumeration.UserType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,24 +20,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class UserModel {
-
+@Table(name = "user_chats")
+public class ChatModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    @JsonIgnore
-    private String password;
-    private String mobile;
-    private Long roleId;
+    private Long fromId;
+    private Long toId;
 
     @Column(length = 1000)
-    private String address;
-    
-    private String position;
+    private String message;
 
     @CreatedDate
     private Date creatdDate;
@@ -47,6 +37,4 @@ public class UserModel {
     @Enumerated(EnumType.STRING)
     private Status status = Status.ACTIVE;
 
-    @Enumerated(EnumType.STRING)
-    private UserType userType = UserType.USER;
 }
