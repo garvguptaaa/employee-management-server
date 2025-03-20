@@ -6,7 +6,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import com.example.employeemanagement.utility.Enumeration.Status;
 import com.example.employeemanagement.utility.Enumeration.UserType;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +30,6 @@ public class UserModel {
     private String firstName;
     private String lastName;
     private String email;
-    @JsonIgnore
     private String password;
     private String mobile;
     private Long roleId;
