@@ -13,4 +13,8 @@ public class ChatDto {
     private Long toId;
     private String message;
     private Date creatdDate;
+    public Long getString(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getString'");
+    }
 }

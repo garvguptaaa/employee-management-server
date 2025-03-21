@@ -12,4 +12,6 @@ public interface ChatRepository extends JpaRepository<ChatModel, Long> {
 
     List<ChatModel> findByFromIdAndToId(Long fromId, Long toId);
 
+    List<ChatModel> findByToIdAndFromId(Long fromId, Long toId);
+
 }

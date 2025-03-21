@@ -1,5 +1,6 @@
 package com.example.employeemanagement.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,6 +51,7 @@ public class UserService {
         userModel.setPassword(user.getPassword());
         userModel.setAddress(user.getAddress());
         userModel.setPosition(user.getPosition());
+        userModel.setCreatdDate(new Date());
 
         return userRepository.save(userModel);
     }
