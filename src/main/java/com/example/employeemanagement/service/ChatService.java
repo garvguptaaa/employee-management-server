@@ -37,15 +37,18 @@ public class ChatService {
         return new ApiResponse(chatModel.getId(), "Chat send successfully");
     }
 
-    public List<ChatDto> getAllList(@RequestBody ChatDto chat) {
+    public List<ChatDto> getAllList(Long fromId, Long toId) {
+        System.out.println("fromId: " + fromId + " toId: " + toId);
         List<ChatDto> response = new ArrayList<>();
-        List<ChatModel> list = chatRepository.findAll();
+        List<ChatModel> list = chatRepository.findByFromIdAndToId(fromId, toId);
         if (list != null && !list.isEmpty()) {
             for (ChatModel chatModel : list) {
-                ChatDto userDto = new ChatDto();
-                userDto.setId(chatModel.getId());
-                userDto.setFromId(chatModel.getFromId());
-                response.add(userDto);
+                ChatDto chatDto = new ChatDto();
+                chatDto.setId(chatModel.getId());
+                chatDto.setFromId(chatModel.getFromId());
+                chatDto.setToId(chatModel.getToId());
+                chatDto.setMessage(chatModel.getMessage());
+                response.add(chatDto);
             }
         }
         return response;

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.employeemanagement.dto.ChatDto;
@@ -34,8 +35,9 @@ public class ChatController {
     }
 
     @GetMapping("/all/list")
-    public List<ChatDto> getAllList(@RequestBody ChatDto chat) {
-        return ChatService.getAllList(chat);
+    public List<ChatDto> getAllList(@RequestParam(value = "from_id", required = false) Long fromId,
+            @RequestParam(value = "to_id", required = false) Long toId) {
+        return ChatService.getAllList(fromId, toId);
     }
 
 }

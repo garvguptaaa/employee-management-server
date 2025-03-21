@@ -14,5 +14,6 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
 
     List<UserModel> findByUserTypeAndStatus(UserType user, Status active);
     Optional<UserModel> findByEmail(String email);
+    List<UserModel> findByStatus(Status active);
 
 }

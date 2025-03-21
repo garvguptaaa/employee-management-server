@@ -40,7 +40,6 @@ public class UserService {
         System.out.println("user.getAddress() ::: " + user.getAddress());
         System.out.println("user.getPosition() ::: " + user.getPosition());
 
-
         userModel.setEmail(user.getEmail());
         userModel.setMobile(user.getMobile());
         userModel.setFirstName(user.getFirstName());
@@ -65,6 +64,10 @@ public class UserService {
 
     public List<UserModel> getAllUsers() {
         return userRepository.findByUserTypeAndStatus(UserType.USER, Status.ACTIVE);
+    }
+
+    public List<UserModel> getAllList() {
+        return userRepository.findByStatus(Status.ACTIVE);
     }
 
     public Optional<UserModel> authenticate(String email, String password) {

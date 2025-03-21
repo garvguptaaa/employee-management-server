@@ -54,6 +54,12 @@ public class UserController {
         return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/all/list")
+    public ResponseEntity<List<UserModel>> getAllList() {
+        List<UserModel> list = userService.getAllList();
+        return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<UserDto> login(@RequestBody UserModel user) {
         Optional<UserModel> isAuthenticated = userService.authenticate(user.getEmail(), user.getPassword());
